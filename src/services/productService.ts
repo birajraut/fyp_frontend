@@ -12,9 +12,14 @@ export const listProduct = async (id: string) => {
     const response = await authApi.get(API_URL + `/${id}`);
 
     return response; // Return the response data (you can adjust this based on your backend response)
-  } catch (error) {
+  } catch (error: unknown) {
+  if (error instanceof Error) {
     throw new Error('Error creating product: ' + error.message);
+  } else {
+    throw new Error('Unknown error creating product');
   }
+}
+
 };
 
 export const createProduct = async (data: any) => {

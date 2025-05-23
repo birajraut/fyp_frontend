@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import type { RootState } from '../redux/store/store';
 
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 
 const UserPrivateRoute = ({ children }: IProps) => {
   const navigate = useNavigate();
-  const { loginAs } = useSelector((state) => state?.auth);
+  const { loginAs } = useSelector((state: RootState) => state?.auth);
 
 
   useEffect(() => {
