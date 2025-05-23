@@ -1,0 +1,6 @@
+/* Tailwind + Quill CSS */
+@import 'react-quill-new/dist/quill.snow.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
