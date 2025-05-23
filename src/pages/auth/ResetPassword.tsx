@@ -8,7 +8,7 @@ import Input from '../../components/ui/Input';
 const ResetPassword = () => {
   const navigate = useNavigate();
   const {state} = useLocation();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState<string>(state?.email ?? '');
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -54,8 +54,8 @@ const ResetPassword = () => {
               type="email"
               placeholder="Email"
               value={state.email}
-              // onChange={(e) => setEmail(e.target.value)}
-              // required
+              onChange={(e) => setEmail(e.target.value)}
+              required
               // disabled={false}
             />
             <Input

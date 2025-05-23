@@ -7,11 +7,12 @@ import ProductForm from '../../../components/ui/forms/ProductForm';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@tanstack/react-query';
 import { restaurantOwnerProducts } from '../../../services/productService';
+import { RootState } from '../../../redux/store/store';
 
 const RestaurantItemsPage = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const { restaurant } = useSelector((state) => state.auth)
+  const { restaurant } = useSelector((state: RootState) => state.auth)
 
 
   const {data} = useQuery({

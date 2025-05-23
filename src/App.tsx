@@ -141,8 +141,10 @@ import UserListPage from './pages/admin/user/user';
 import NotFound from './pages/NotFound/NotFound';
 import DashboardPage from './pages/admin/dahboard/dashboard';
 
+import { RootState } from './redux/store/store';
+
 const App = () => {
-  const { user, restaurant } = useSelector((state) => state?.auth);
+  const { user, restaurant } = useSelector((state: RootState) => state?.auth);
   console.log(user, 'user');
   return (
     <Routes>

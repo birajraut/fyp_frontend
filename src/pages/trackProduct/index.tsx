@@ -1,4 +1,6 @@
 // src/pages/TrackProductPage.tsx
+/// <reference types="node" />
+
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -37,8 +39,12 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
 const TrackProductPage = () => {
   const { id } = useParams();
-  const { state } = useLocation();
-  const order = state?.order;
+  // const { state } = useLocation();
+  // const order = state?.order;
+
+  const location = useLocation();
+  const order = (location.state as { order: any })?.order;
+
   const [routeCoords, setRouteCoords] = useState<Coordinates[]>([]);
 
 
@@ -210,15 +216,23 @@ setProductLocation([Details?.lng, Details?.lat])
 
         setRouteCoords(data?.routes[0]?.geometry?.coordinates); // <- Store route
 
-          const geojson = {
+          const geojson: GeoJSON.Feature = {
             'type': 'Feature',
             'properties': {},
             'geometry': data?.routes[0]?.geometry
           };
 
           if (map?.current?.getSource('route')) {
+
+            const source = map?.current?.getSource('route') as mapboxgl.GeoJSONSource;
+            source?.setData(geojson);
+
             // if the route already exists on the map, reset it using setData
-            map?.current?.getSource('route').setData(geojson);
+            
+              const routeSource = map?.current?.getSource('route') as mapboxgl.GeoJSONSource;
+              routeSource?.setData(geojson);
+
+            // map?.current?.getSource('route').setData(geojson);
 
             // map?.current?.addLayer({
             //   id: 'route',

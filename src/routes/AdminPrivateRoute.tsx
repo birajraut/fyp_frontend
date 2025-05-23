@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../redux/store/store";
 
 
 interface IProps {
@@ -9,7 +10,7 @@ interface IProps {
 
 const AdminPrivateRoute = ({ children }: IProps) => {
     const navigate = useNavigate();
-    const { loginAs } = useSelector((state) => state?.auth);
+    const { loginAs } = useSelector((state: RootState) => state?.auth);
 
     useEffect(() => {
         if (loginAs !== 'ADMIN') {

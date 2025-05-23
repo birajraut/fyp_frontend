@@ -13,6 +13,7 @@ interface IProps {
   value?: string | number;
   isPassword?: boolean
   icon: ReactNode
+  required?: boolean
 }
 const Input = ({ type, name, onChange, placeholder, error, className, label, value, isPassword, icon }: IProps) => {
   const [showPwd, setShowPwd] = useState<boolean>(false)

@@ -10,7 +10,7 @@ export interface IAuth {
   refreshToken: string | null;
   user: IUserResponse | null;
   loginAs: ILoginAs | null;
-  restaurant: IRestaurant;
+  restaurant: IRestaurant | null;
 }
 
 export interface IRootReducer {

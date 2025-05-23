@@ -7,10 +7,18 @@ import Input from '../Input';
 import Textarea from '../Textarea';
 import { createProduct,updateProduct } from '../../../services/productService';
 import { useQueryClient } from '@tanstack/react-query';
+import {IProduct} from '../../../types/product';
 
-const ProductForm = ({ restaurantId, setModelOpen, selectedProduct }) => {
+interface ProductFormProps {
+  restaurantId: string;
+  setModelOpen: (open: boolean) => void;
+  selectedProduct?: IProduct;
+}
+
+const ProductForm: React.FC<ProductFormProps> = ({ restaurantId, setModelOpen, selectedProduct }) => {
+
   const [loading, setLoading] = useState(false);
-const queryClient = useQueryClient()
+  const queryClient = useQueryClient()
   console.log(restaurantId,'restaurant')
 
 
@@ -75,7 +83,11 @@ const queryClient = useQueryClient()
             value={formik.values.name}
             onChange={formik.handleChange}
             className='w-full p-2 mt-2 border rounded'
-            error={formik.touched.name && formik.errors.name}
+            error={
+                    formik.touched.name && typeof formik.errors.name === 'string'
+                      ? formik.errors.name
+                      : undefined
+                  }
           />
         </div>
 
@@ -86,7 +98,11 @@ const queryClient = useQueryClient()
             value={formik.values.description}
             onChange={formik.handleChange}
             className='w-full p-2 mt-2 border rounded'
-            error={formik.touched.description && formik.errors.description}
+            error={
+                    formik.touched.description && typeof formik.errors.description === 'string'
+                      ? formik.errors.name
+                      : undefined
+                  }
           />
         </div>
 
@@ -124,7 +140,11 @@ const queryClient = useQueryClient()
             value={formik.values.price}
             onChange={formik.handleChange}
             className='w-full p-2 mt-2 border rounded'
-            error={formik.touched.price && formik.errors.price}
+            error={
+                    formik.touched.price && typeof formik.errors.price === 'string'
+                      ? formik.errors.name
+                      : undefined
+                  }
           />
         </div>
 
