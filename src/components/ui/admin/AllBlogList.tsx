@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import  { useMemo } from "react";
 import CustomButton from "../CustomButton";
 import { LuEye } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,7 @@ const AllBlogList = ({ blogList, search }: IProps) => {
     if (!search?.trim()) return blogList;
     const lowerSearch = search.toLowerCase();
 
-    return blogList?.filter((item) => {
+    return blogList?.filter((item:any) => {
       const title = item?.title?.toLowerCase() || "";
       const author = item?.creator?.fullName?.toLowerCase() || "";
       return title.includes(lowerSearch) || author.includes(lowerSearch);
@@ -41,7 +41,7 @@ const AllBlogList = ({ blogList, search }: IProps) => {
           </tr>
         </thead>
         <tbody>
-          {filteredBlogs?.map((item, index) => (
+          {filteredBlogs?.map((item:any, index:number) => (
             <tr key={index} className="border-b">
               <td className="p-5">
                 <div className="flex items-center gap-3">

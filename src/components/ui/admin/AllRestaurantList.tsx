@@ -87,7 +87,7 @@
 
 // export default AllRestaurantList
 
-import React, { useMemo } from "react";
+import  { useMemo } from "react";
 import CustomButton from "../CustomButton";
 import { LuEye } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
@@ -110,7 +110,7 @@ const AllRestaurantList = ({ restaurantList, search }: IProps) => {
     if (!search?.trim()) return restaurantList;
     const lowerSearch = search.toLowerCase();
 
-    return restaurantList?.filter((item) => {
+    return restaurantList?.filter((item:any) => {
       const restName = item?.name?.toLowerCase() || "";
       const ownerName = item?.creator?.fullName?.toLowerCase() || "";
       return (
@@ -132,7 +132,7 @@ const AllRestaurantList = ({ restaurantList, search }: IProps) => {
           </tr>
         </thead>
         <tbody>
-          {filteredRestaurants?.map((item, index) => (
+          {filteredRestaurants?.map((item:any, index:number) => (
             <tr key={index} className="border-b">
               <td className="p-5">
                 <div className="flex items-center gap-3">

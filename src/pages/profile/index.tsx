@@ -6,21 +6,21 @@ import { updateRestaurantImage } from "../../services/restaurant";
 
 
 const Profile = () => {
-  const auth = useSelector((state) => state?.auth);
+  const auth = useSelector((state:any) => state?.auth);
   const user = auth?.user?.user;
   const restaurant = auth?.restaurant;
 
   const [imageUrl, setImageUrl] = useState(
     restaurant?.image || user?.image || userPlaceholder
   );
-  const inputFileRef = useRef();
+  const inputFileRef = useRef<any>('');
 
 
 const handleEditClick = () => {
     inputFileRef.current.click(); // Trigger hidden file input
   };
 
-  const handleImageChange = async (event) => {
+  const handleImageChange = async (event:any) => {
     const file = event.target.files[0];
     if (!file) return;
 

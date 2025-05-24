@@ -28,7 +28,7 @@ const RestaurantPage = () => {
     queryFn: async () => listRestaurant()
   });
 
-  const filteredRestaurants = restaurantList?.data?.result?.filter((restaurant) => {
+  const filteredRestaurants = restaurantList?.data?.result?.filter((restaurant:any) => {
     if (selectedCategory === '') return true;
     return restaurant.category === selectedCategory;
   });

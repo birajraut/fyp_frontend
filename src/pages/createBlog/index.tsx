@@ -1,4 +1,4 @@
-import React from 'react';
+
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +26,7 @@ const queryClient = useQueryClient();
     initialValues: {
       title: '',
       content: '',
-      image: '' as string, // base64 string
+      image: '' as any, // base64 string
     },
     validationSchema: Yup.object({
       title: Yup.string().required('Title is required'),
@@ -58,16 +58,16 @@ const queryClient = useQueryClient();
     },
   });
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.currentTarget.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        formik.setFieldValue('image', reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.currentTarget.files?.[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       formik.setFieldValue('image', reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md mt-8">
@@ -107,7 +107,7 @@ const queryClient = useQueryClient();
           <FileInput getFile={(file)=> formik.setValues({...formik.values, image: file})} />
 
           {formik.touched.image && formik.errors.image && (
-            <p className="text-red-500 text-sm mt-1">{formik.errors.image}</p>
+            <p className="text-red-500 text-sm mt-1">{formik.errors.image as any}</p>
           )}
 
           {/* Optional Preview */}

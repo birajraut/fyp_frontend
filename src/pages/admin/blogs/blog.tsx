@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Input from "../../../components/ui/Input";
 import { CiSearch } from "react-icons/ci";
-import CustomButton from "../../../components/ui/CustomButton";
+// import CustomButton from "../../../components/ui/CustomButton";
 import NavTab from "../../../components/ui/Navtab";
 import AllBlogList from "../../../components/ui/admin/AllBlogList";
 import { useQuery } from "@tanstack/react-query";
@@ -17,7 +17,7 @@ const AdminBlogPage = () => {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["admin-blog-list", status],
-    queryFn: async () => await listBlogs(status || ""),
+    queryFn: async () => await listBlogs(status || "" as any),
   });
 
   const tablist = [
@@ -35,7 +35,7 @@ const AdminBlogPage = () => {
       },
       content: (
         <AllBlogList
-          blogList={data?.filter((blog) => blog.status === "PUBLISHED")}
+          blogList={data?.filter((blog:any) => blog.status === "PUBLISHED")}
           search={search}
         />
       ),
@@ -47,7 +47,7 @@ const AdminBlogPage = () => {
       },
       content: (
         <AllBlogList
-          blogList={data?.filter((blog) => blog.status !== "PUBLISHED")}
+          blogList={data?.filter((blog:any) => blog.status !== "PUBLISHED")}
           search={search}
         />
       ),

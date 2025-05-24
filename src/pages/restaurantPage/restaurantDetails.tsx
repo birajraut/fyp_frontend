@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import { addToCart, removeFromCart, resetCart } from "../../redux/reducers/cartS
 const RestaurantDetail = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state:any) => state.cart.cart);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTab, setSelectedTab] = useState("all");
 
@@ -31,7 +31,7 @@ const RestaurantDetail = () => {
     queryFn: async () => listProduct(id as string),
   });
 
-  const restaurantData: IRestaurantResponse = restaurant?.data?.result;
+  const restaurantData: IRestaurantResponse | any = restaurant?.data?.result;
 
   if (isLoading) {
     return (
@@ -50,11 +50,11 @@ const RestaurantDetail = () => {
   }
 
   const getProductQuantity = (productId: string) => {
-    const productInCart = cart.find((item) => item._id === productId);
+    const productInCart = cart.find((item:any) => item._id === productId);
     return productInCart ? productInCart.quantity : 0;
   };
 
-  const handleAdd = (product) => {
+  const handleAdd = (product:any) => {
     if (cart.length > 0) {
       const sameRestaurant = cart[0]?.restaurant?._id === product?.restaurant?._id;
 
@@ -72,7 +72,7 @@ const RestaurantDetail = () => {
     dispatch(addToCart({ ...product, quantity: 1 }));
   };
 
-  const handleRemove = (productId) => {
+  const handleRemove = (productId:any) => {
     dispatch(removeFromCart(productId));
   };
 
@@ -145,11 +145,11 @@ const RestaurantDetail = () => {
           <div className="space-y-6">
             {productList?.data?.result
               ?.filter(
-                (product) =>
+                (product:any) =>
                   product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
                   (selectedTab === "all" || product.foodtype === selectedTab)
               )
-              .map((product) => (
+              .map((product:any) => (
                 <div
                   key={product._id}
                   className="flex items-center gap-6 bg-white shadow-md rounded-lg p-4"

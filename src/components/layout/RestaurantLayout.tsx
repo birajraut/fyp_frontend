@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { FaUtensils, FaChartPie, FaUsers, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaUtensils, FaSignOutAlt } from 'react-icons/fa';
 import { MdFastfood } from 'react-icons/md';
-import { BiMessageSquareDetail } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/reducers/authSlice';
 

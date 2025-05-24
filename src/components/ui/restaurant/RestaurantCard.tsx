@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import placeholder from "../../../assets/restaurantPlaceholder.png"
-import { useDispatch, useSelector } from "react-redux"
-import { setUser } from "../../../redux/reducers/authSlice"
+import { useSelector } from "react-redux"
+// import { setUser } from "../../../redux/reducers/authSlice"
 
 interface IProps {
     id:string
@@ -11,10 +11,10 @@ interface IProps {
 }
 const RestaurantCard = ({title, description, logo, id}:IProps)=>{
     const navigate = useNavigate()
-    const auth= useSelector(state=>state.auth)
+    const auth= useSelector((state:any)=>state.auth)
     // const user = useSelector(state=>state.user)
     // console.log(logo, auth.accessToken,'aiuth state')
-const dispatch= useDispatch()
+// const dispatch= useDispatch()
     const handleRedirect = ()=>{
         if(auth?.accessToken){
             // dispatch(setUser({...user}))

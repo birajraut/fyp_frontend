@@ -1,7 +1,7 @@
-import React from "react";
-import { FaUsers, FaHamburger, FaMoneyBillWave, FaShoppingBag } from "react-icons/fa";
+// import React from "react";
+import { FaUsers, FaMoneyBillWave, FaShoppingBag } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-import { listUsers } from "../../../services/user";
+// import { listUsers } from "../../../services/user";
 import CustomCard from "../../../components/ui/CustomCard";
 import { adminDashboard } from "../../../services/admin";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -29,19 +29,19 @@ const navigate = useNavigate()
           icon={<FaShoppingBag size={24} />}
           label="Total Orders"
           value={stats?.totalOrders || 0}
-          bgColor="bg-blue-100"
+          // bgColor="bg-blue-100"
         />
         <CustomCard
           icon={<FaUsers size={24} />}
           label="Total Customers"
           value={stats?.totalCustomers || 1}
-          bgColor="bg-green-100"
+          // bgColor="bg-green-100"
         />
         <CustomCard
           icon={<FaMoneyBillWave size={24} />}
           label="Revenue"
           value={`₹ ${stats?.revenue?.toLocaleString() || 0}`}
-          bgColor="bg-yellow-100"
+          // bgColor="bg-yellow-100"
         />
         {/* <CustomCard
           icon={<FaHamburger size={24} />}
@@ -60,7 +60,7 @@ const navigate = useNavigate()
           <p className="text-center text-lg text-red-500">Failed to fetch data.</p>
         ) : 
 
-            stats?.recentOrders?.map((order) => (
+            stats?.recentOrders?.map((order:any) => (
                 <div key={order._id} className="bg-white rounded-lg shadow-lg p-4 mb-2">
                           {/* Order Header */}
                           <div className="flex items-center justify-between mb-1">
@@ -79,7 +79,7 @@ const navigate = useNavigate()
             
                           {/* Products */}
                           <div className="space-y-4">
-                            {order.products?.map((item, index) => (
+                            {order.products?.map((item:any, index:number) => (
                               <div key={index} className="flex items-start space-x-4">
                                 <img
                                   src={item?.product_id?.image || 'https://via.placeholder.com/100'}

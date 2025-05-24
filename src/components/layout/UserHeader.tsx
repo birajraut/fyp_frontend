@@ -1,21 +1,18 @@
-import { NavLink, useNavigate, useLocation, data } from "react-router-dom";
-import Button from "../../components/ui/button";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { IRootReducer } from "../../types/redux";
-import { mainMenu, mainMenuRestaurantManager } from "../../constants/menu";
+import { mainMenu } from "../../constants/menu";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import userPlaceholder from "../../assets/userPlaceholder.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { FaPhone, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
-import { setLoginAs, setRestaurant, setUser } from "../../redux/reducers/authSlice";
-import { use } from "react";
+import { setLoginAs, setRestaurant } from "../../redux/reducers/authSlice";
 
 const UserHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { accessToken, user } = useSelector((root: IRootReducer) => root.auth);
-  const cart = useSelector((state) => state.cart.cart);
+  const { accessToken, user } = useSelector((root: IRootReducer | any) => root.auth);
+  const cart = useSelector((state:any) => state.cart.cart);
 
   const isAuthorized = !!accessToken;
 
@@ -34,7 +31,7 @@ const UserHeader = () => {
     navigate("cart");
   };
 
-  const handleRestaurantSwitch = (restaurant) => {
+  const handleRestaurantSwitch = (restaurant:any) => {
     const restData = {
       ...restaurant,
       id: restaurant._id,
@@ -199,7 +196,7 @@ const UserHeader = () => {
                             <div className="px-4 py-2 text-xs font-semibold text-gray-400 border-t border-gray-100 mt-2">
                               Your Restaurants
                             </div>
-                            {user.restaurant.map((item) => (
+                            {user.restaurant.map((item:any) => (
                               <MenuItem key={item._id}>
                                 {({ active }) => (
                                   <button

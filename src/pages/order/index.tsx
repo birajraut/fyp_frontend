@@ -1,5 +1,4 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IRootReducer } from '../../types/redux';
@@ -7,7 +6,7 @@ import { listOrder, updateDeliveryStatus } from '../../services/sale';
 
 const OrderPage = () => {
   const navigate = useNavigate();
-  const { user } = useSelector((root: IRootReducer) => root.auth);
+  const { user } = useSelector((root: IRootReducer | any) => root.auth);
   const { restaurant } = useSelector((root: IRootReducer) => root.auth);
   const { pathname } = useLocation();
 const queryClient= useQueryClient()
@@ -53,7 +52,7 @@ const queryClient= useQueryClient()
         <p className="text-center text-lg text-gray-500">No orders found.</p>
       ) : (
         <div className="space-y-6">
-          {orders?.map((order) => (
+          {orders?.map((order:any) => (
             <div key={order._id} className="bg-white rounded-lg shadow-lg p-4">
               {/* Order Header */}
               <div className="flex items-center justify-between mb-4">
@@ -72,7 +71,7 @@ const queryClient= useQueryClient()
 
               {/* Products */}
               <div className="space-y-4">
-                {order.products?.map((item, index) => (
+                {order.products?.map((item:any, index:number) => (
                   <div key={index} className="flex items-start space-x-4">
                     <img
                       src={item?.product?.image || 'https://via.placeholder.com/100'}

@@ -123,7 +123,7 @@ const CartPage = () => {
   };
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total:any, item:any) => total + item.price * item.quantity, 0);
   };
 
   const handleCheckout = () => {
@@ -140,7 +140,7 @@ const CartPage = () => {
           <p className="text-center text-xl text-gray-500">Your cart is empty.</p>
         ) : (
           <div className="space-y-6">
-            {cart.map((item) => (
+            {cart.map((item:any) => (
               <div
                 key={item._id}
                 className="flex items-center gap-6 bg-gray-50 p-4 rounded-lg shadow-md"

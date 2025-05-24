@@ -111,13 +111,13 @@ interface IProps {
 }
 
 const CheckoutForm = ({ submitFn }: IProps) => {
-  const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state:any) => state.cart.cart);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();  // Initialize navigate
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const total = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const total = cart.reduce((total:any, item:any) => total + item.price * item.quantity, 0);
 
   // Function for payment through Stripe
   const handlePayment = async (e: React.FormEvent) => {

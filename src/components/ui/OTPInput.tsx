@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 import { useState, useRef } from "react";
 
-const OTPInput = ({ length = 6, onComplete }) => {
+const OTPInput = ({ length = 6, onComplete }:{length?: number, onComplete?: (otp: string) => void}) => {
     const [otp, setOtp] = useState(new Array(length).fill(""));
-    const inputRefs = useRef([]);
+    const inputRefs = useRef<any>([]);
 
-    const handleChange = (index, e) => {
+    const handleChange = (index:number, e:any) => {
         const value = e.target.value;
         if (!/^[0-9]?$/.test(value)) return;
         const newOtp = [...otp];
@@ -21,7 +21,7 @@ const OTPInput = ({ length = 6, onComplete }) => {
         }
     };
 
-    const handleKeyDown = (index, e) => {
+    const handleKeyDown = (index:number, e:any) => {
         if (e.key === "Backspace" && !otp[index] && index > 0) {
             inputRefs.current[index - 1]?.focus();
         }
@@ -32,9 +32,9 @@ const OTPInput = ({ length = 6, onComplete }) => {
             {otp.map((digit, index) => (
                 <input
                     key={index}
-                    ref={(el) => (inputRefs.current[index] = el)}
+                    ref={(el:any) => (inputRefs.current[index] = el)}
                     type="text"
-                    maxLength="1"
+                    maxLength={1}
                     value={digit}
                     onChange={(e) => handleChange(index, e)}
                     onKeyDown={(e) => handleKeyDown(index, e)}

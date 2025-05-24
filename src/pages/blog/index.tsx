@@ -8,7 +8,7 @@ import { listBlogs } from "../../services/blog";
 const BlogPage = () => {
   const user = useSelector((state: any) => state.auth.user); // Fetch user from Redux
   const navigate = useNavigate();
-  const { data:blogPosts, isLoading, isError } = useQuery({
+  const { data:blogPosts } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () =>  await listBlogs(),
   });
@@ -73,7 +73,7 @@ const BlogPage = () => {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts?.map((post) => (
+          {blogPosts?.map((post:any) => (
             <Card key={post._id} className="overflow-hidden">
               {post.image && (
                 <img 

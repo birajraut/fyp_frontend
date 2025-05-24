@@ -1,11 +1,11 @@
 import { CiEdit } from 'react-icons/ci';
 import CustomButton from '../../CustomButton';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import placeholder from '../../../../assets/product_placeholder.webp';
 import { twMerge } from 'tailwind-merge';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeFromCart, resetCart } from '../../../../redux/reducers/cartSlice';
+import {  removeFromCart } from '../../../../redux/reducers/cartSlice';
 import { RootState } from '../../../../redux/store/store';
 import Model from '../../Model';
 import ProductForm from '../../forms/ProductForm';
@@ -23,12 +23,12 @@ interface IProps {
   restaurant?: any;
 }
 
-const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
+// const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
 
 const ProductCard = ({ title, description, price, id, image, subTitle, forUser = false, className, restaurant }: IProps) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { cart } = useSelector((state: RootState) => state.cart);
   const addedItem = cart.find((item) => item._id === id);

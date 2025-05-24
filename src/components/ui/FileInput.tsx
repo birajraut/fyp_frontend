@@ -10,7 +10,7 @@ interface IProps {
 
 const FileInput = ({label, getFile}:IProps) => {
   const [image, setImage] = useState<File | null>(null);
-  const inputFileRef = useRef(null); 
+  const inputFileRef = useRef<any>(null); 
 
 
   const handleDrop = (e:any) => {

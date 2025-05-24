@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 const ContactUsPage = () => {

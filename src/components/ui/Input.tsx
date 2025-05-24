@@ -12,7 +12,7 @@ interface IProps {
   label?: string;
   value?: string | number;
   isPassword?: boolean
-  icon: ReactNode
+  icon?: ReactNode
   required?: boolean
 }
 const Input = ({ type, name, onChange, placeholder, error, className, label, value, isPassword, icon }: IProps) => {

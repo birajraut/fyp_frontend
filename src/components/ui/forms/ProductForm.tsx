@@ -78,6 +78,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ restaurantId, setModelOpen, s
         <div className='my-2'>
           <label>Name:</label>
           <Input
+          
             type='text'
             name='name'
             value={formik.values.name}

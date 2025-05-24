@@ -51,6 +51,7 @@ const ResetPassword = () => {
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <Input
+              name='email'
               type="email"
               placeholder="Email"
               value={state.email}
@@ -58,7 +59,8 @@ const ResetPassword = () => {
               required
               // disabled={false}
             />
-            <Input
+            <Input 
+              name='otp'
               type="text"
               placeholder="OTP"
               value={otp}
@@ -66,6 +68,7 @@ const ResetPassword = () => {
               required
             />
             <Input
+              name='password'
               type="password"
               placeholder="New Password"
               value={newPassword}
@@ -73,6 +76,7 @@ const ResetPassword = () => {
               required
             />
             <Input
+              name='Confirm Password'
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}

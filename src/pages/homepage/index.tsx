@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import { listRestaurant } from "../../services/restaurant";
 import RestaurantCard from '../../components/ui/restaurant/RestaurantCard'
-import { useSelector } from 'react-redux';
-import { IRootReducer } from '../../types/redux';
+// import { useSelector } from 'react-redux';
+// import { IRootReducer } from '../../types/redux';
 
 
 // Placeholder images for the hero section
@@ -168,7 +168,7 @@ const HomePage = () => {
             ) : error ? (
               <div>Error loading restaurants</div>
             ) : (
-              restaurantList?.data?.result?.slice(0, 6).map((restaurant, index) => (
+              restaurantList?.data?.result?.slice(0, 6).map((restaurant:any) => (
                 <RestaurantCard
                   key={restaurant._id}
                   id={restaurant._id}

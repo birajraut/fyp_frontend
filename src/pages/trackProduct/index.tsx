@@ -1,12 +1,12 @@
 // src/pages/TrackProductPage.tsx
 /// <reference types="node" />
 
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { getProductLocation } from '../../services/productService';
-import { useSocket } from '../../hooks/useSocket';
-import { useLocation, useParams } from 'react-router';
+// import { getProductLocation } from '../../services/productService';
+// import { useSocket } from '../../hooks/useSocket';
+import { useLocation } from 'react-router';
 import { resturantDetailsFn } from '../../services/restaurant';
 
 // Types
@@ -14,31 +14,31 @@ type Coordinates = [number, number];
 
 // Constants
 const MAPBOX_STYLE = 'mapbox://styles/mapbox/streets-v12';
-const FALLBACK_PRODUCT_LOCATION: Coordinates = [85.328, 27.72];
+// const FALLBACK_PRODUCT_LOCATION: Coordinates = [85.328, 27.72];
 const FALLBACK_USER_LOCATION: Coordinates = [85.324, 27.7];
-const ROUTE_LINE_STYLE = {
-  id: 'route',
-  type: 'line' as const,
-  paint: {
-    'line-color': '#1db7dd',
-    'line-width': 10,
-  },
-  layout: {
-    'line-join': 'round',
-    'line-cap': 'round',
-  },
-};
+// const ROUTE_LINE_STYLE = {
+//   id: 'route',
+//   type: 'line' as const,
+//   paint: {
+//     'line-color': '#1db7dd',
+//     'line-width': 10,
+//   },
+//   layout: {
+//     'line-join': 'round',
+//     'line-cap': 'round',
+//   },
+// };
 
 // Delivery person settings
 const DELIVERY_MARKER_COLOR = '#3bb54a';
 const DUMMY_UPDATE_INTERVAL = 3000; // 3 seconds
-const DUMMY_MOVEMENT_STEP = 0.001;
+// const DUMMY_MOVEMENT_STEP = 0.001;
 
 // Initialize Mapbox
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
 const TrackProductPage = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
   // const { state } = useLocation();
   // const order = state?.order;
 
@@ -50,7 +50,7 @@ const TrackProductPage = () => {
 
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
-  const socket = useSocket();
+  // const socket = useSocket();
   const deliveryMarkerRef = useRef<mapboxgl.Marker | null>(null);
   const dummyUpdateIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -206,7 +206,7 @@ setProductLocation([Details?.lng, Details?.lat])
           `https://api.mapbox.com/directions/v5/mapbox/driving/${productLocation[0]}%2C${productLocation[1]}%3B${userLocation[0]}%2C${userLocation[1]}?alternatives=true&steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`
         );
         const data = await response.json();
-        const route = data.routes?.[0]?.geometry;
+        // const route = data.routes?.[0]?.geometry;
 
         // if (!route || !map.current) return;
 

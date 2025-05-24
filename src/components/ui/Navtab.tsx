@@ -28,7 +28,7 @@ const NavTab = ({ tabList }: IProps) => {
 
 
 
-    const handleClick = (title: string) => {
+    const handleClick = (title: any) => {
         setActive(title.name)
         queryParams.set('status', title.id); // if URL is ?name=John
         navigate(`${location.pathname}?${queryParams.toString()}`);

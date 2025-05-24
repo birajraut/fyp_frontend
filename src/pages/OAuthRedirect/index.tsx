@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {setAccessToken, setRefreshToken, setUser} from "../../redux/reducers/authSlice"
+import {setAccessToken, setRefreshToken} from "../../redux/reducers/authSlice"
 
 const OAuthRedirect = () => {
   const dispatch = useDispatch()

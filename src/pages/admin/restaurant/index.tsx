@@ -76,10 +76,10 @@
 
 // export default AdminRestaurantPage;
 
-import React, { useState } from "react";
+import  { useState } from "react";
 import Input from "../../../components/ui/Input";
 import { CiSearch } from "react-icons/ci";
-import CustomButton from "../../../components/ui/CustomButton";
+// import CustomButton from "../../../components/ui/CustomButton";
 import NavTab from "../../../components/ui/Navtab";
 import AllRestaurantList from "../../../components/ui/admin/AllRestaurantList";
 import { useQuery } from "@tanstack/react-query";

@@ -13,7 +13,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Model from '../Model';
 import MapComponent from '../../map/Map';
-import React from 'react';
+// import React from 'react';
 
 
 // Initialize Mapbox
@@ -113,7 +113,7 @@ const RestaurantCreateForm = ({ setIsModalOpen }: IProps) => {
     const handleSelectLocation = () => {
         console.log(selectedLocation,'selected location')
         if (autocompleteRef.current && addressInputRef.current) {
-            const inputEl = addressInputRef.current.querySelector('input');
+            const inputEl:any = addressInputRef.current.querySelector('input');
             if (inputEl) {
             inputEl.value = selectedLocation?.address;
         }

@@ -26,12 +26,13 @@ const RestaurantItemsPage = () => {
       <Model
         openModel={openModal}
         setModelOpen={setOpenModal}
-        body={<ProductForm setModelOpen={setOpenModal}  restaurantId={restaurant?.id} />}
+        body={<ProductForm setModelOpen={setOpenModal}  restaurantId={restaurant?.id as any} />}
         title='Create a Product'
       />
       <div className='mb-10 flex items-center gap-10 justify-between'>
         <div className='w-full'>
           <Input
+            icon=''
             type='search'
             name='search'
             className='p-5'
@@ -50,7 +51,7 @@ const RestaurantItemsPage = () => {
       </div>
       <div className='grid grid-cols-4 gap-5'>
         {
-          data?.data?.result?.map((item, index)=>{
+          data?.data?.result?.map((item:any, index:number)=>{
             return (
 <ProductCard 
 key={index}

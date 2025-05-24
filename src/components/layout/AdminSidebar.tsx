@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { adminMenu } from '../../constants/menu';
 import { useNavigate, useLocation } from 'react-router-dom';
 
