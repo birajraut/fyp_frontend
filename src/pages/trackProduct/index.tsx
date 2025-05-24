@@ -1,5 +1,5 @@
 // src/pages/TrackProductPage.tsx
-//  <reference types="node" />
+/// <reference types="node" />
 
 import  { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
